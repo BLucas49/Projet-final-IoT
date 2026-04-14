@@ -1,0 +1,7 @@
+# Fichier de secrets -- NE JAMAIS committer
+credentials.h
+
+*.elf
+*.bin
+*.map
+build/
