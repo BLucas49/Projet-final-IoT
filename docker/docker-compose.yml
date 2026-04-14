@@ -133,6 +133,9 @@ services:
       - /dev/disk/:/dev/disk:ro
     networks:
       - ming
+    privileged: true
+    devices:
+      - /dev/kmsg:/dev/kmsg
 
   prometheus:
     image: prom/prometheus:latest
