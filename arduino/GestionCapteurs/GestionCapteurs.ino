@@ -4,9 +4,9 @@
 
 #define RXD2 16    // GPIO16 -> branché sur TX du RAK3272S
 #define TXD2 17    // GPIO17 -> branché sur RX du RAK3272S
-#define LED1 18    // LED 1 pour l'animation d'envoie
-#define LED2 19    // LED 2 """
-#define LED3 21    // LED 3 """
+#define LED1 18    // LED Verte
+#define LED2 19    // LED Jaune
+#define LED3 21    // LED Bleue
 #define DHTPIN 5   // port du capteur de température et d'humidité
 #define BUZZPIN 4  // port du buzzer pour l'envoie
 #define LDR_PIN 27 // port du capteur de luminiosité

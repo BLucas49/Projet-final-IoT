@@ -74,10 +74,10 @@ La LED (Light Emitting Diode) est un composant lumineux qui émet de la lumière
 
 ##### Led jaune
 
-1. Relier la broche + (la plus grande) à la PIN D22 de l'esp32
+1. Relier la broche + (la plus grande) à la PIN D19 de l'esp32
 1. Relier la broche - (la plus petite) au **GND**
 
 ##### Led bleue
 
-1. Relier la broche + (la plus grande) à la PIN D23 de l'esp32
+1. Relier la broche + (la plus grande) à la PIN D18 de l'esp32
 1. Relier la broche - (la plus petite) au **GND**
