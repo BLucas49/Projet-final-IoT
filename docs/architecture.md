@@ -3,7 +3,7 @@
 > Remarque générale pour tout Branchements ne pas mettre sous tension le montage
 > Pour des soucis de compréhension chacunes des deux boards ont leur propre documentation.
 
-Certains branchements se répète ils seront donc ici
+Certains branchements se répètent ils seront donc ici
 
 ## Configuration générale
 
