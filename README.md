@@ -20,6 +20,8 @@
   - 2 esp32
   - 2 module RAK
 
+![alt schema](./images/mermaid_schema.png)
+
 ## Présentation du répertoire GITHUB
 
 Ce répertoire contient tous le nécessaire pour mettre en place de projet
@@ -27,5 +29,5 @@ Ce répertoire contient tous le nécessaire pour mettre en place de projet
 1. Le dossier arduino contient les scripts pour les ESP32
 2. Le dossier docker contient les fichiers dockers pour la mise en place du serveur
 3. Le dossier docs contient les documentation sur l'architecture du projet & sur le RGPD
-4. Le dossier grafana ...
-5. Le dossier nodered ...
+4. Le dossier grafana contient le dashboard exporté au format json ainsi que des screens du dashboard
+5. Le dossier nodered contient la conf du flux de donnée exporté au format json et un screen du schéma
