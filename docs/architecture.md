@@ -3,7 +3,7 @@
 > Remarque générale pour tout Branchements ne pas mettre sous tension le montage
 > Pour des soucis de compréhension chacunes des deux boards ont leur propre documentation.
 
-![alt schema](./images/mermaid_schema.png)
+![alt schema](../images/mermaid_schema.png)
 
 ## Configuration générale
 
