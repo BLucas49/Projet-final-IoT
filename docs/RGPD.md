@@ -7,12 +7,12 @@
 
 ## 1. Donnees collectees (Art. 30 RGPD -- Registre des traitements)
 
-| Donnée collectée                        | Type              | Capteur          | Fréquence        | Durée de rétention | Qualifié de DCP ?                                |
-| --------------------------------------- | ----------------- | ---------------- | ---------------- | ------------------ | ------------------------------------------------ |
-| TODO (ex: Température)                  | Numérique (float) | TODO (ex: DHT22) | TODO (ex: 1/min) | 30 jours           | Non -- donnée physique                           |
-| TODO (ex: Humidité)                     | Numérique (float) | TODO (ex: DHT22) | TODO (ex: 1/min) | 30 jours           | Non -- donnée physique                           |
-| DevEUI du device                        | Identifiant       | RAK3172          | À chaque join    | 30 jours           | **Potentiellement** -- identifiant unique        |
-| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN              | À chaque envoi   | 30 jours           | **Potentiellement** -- géolocalisation indirecte |
+| Donnée collectée                        | Type              | Capteur          | Fréquence        | Durée de rétention                   | Qualifié de DCP ?                                |
+| --------------------------------------- | ----------------- | ---------------- | ---------------- | ------------------------------------ | ------------------------------------------------ |
+| 23.1                                    | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
+| 39                                      | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
+| DevEUI du device                        | Identifiant       | RAK3172          | À chaque join    | 30 jours                             | **Potentiellement** -- identifiant unique        |
+| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN              | À chaque envoi   | Supprimé à la consomation du message | **Potentiellement** -- géolocalisation indirecte |
 
 > **Donnée à caractère personnel (DCP) :**
 
@@ -36,15 +36,41 @@ Sur ce projet aucune données personnelles ne sont utilisée. Toutefois il est n
 
 ## 2. Mesures techniques appliquees (Art. 32 RGPD)
 
-| Mesure                           | Composant   | Implémentation                                    | Statut |
-| -------------------------------- | ----------- | ------------------------------------------------- | ------ |
-| Authentification broker MQTT     | Mosquitto   | password_file, allow_anonymous false              | [x] S8 |
-| Chiffrement en transit MQTT      | Mosquitto   | TLS port 8883, certificat auto-signé              | [x] S8 |
-| Chiffrement radio LoRaWAN        | RAK3172/TTN | AES-128 natif, clés OTAA                          | [x] S3 |
-| Contrôle d'accès base de données | InfluxDB    | Token API, 1 token par service                    | [x] S8 |
-| Contrôle d'accès tableau de bord | Grafana     | Mot de passe admin, sign-up désactivé             | [x] S8 |
-| Minimisation des données         | Payload hex | Payload 2 octets (valeur seule, sans métadonnées) | [x] S5 |
-| Limitation de durée de rétention | InfluxDB    | Rétention 30 jours (configurable)                 | [x] S5 |
+| Mesure                           | Composant   | Implémentation                                    |
+| -------------------------------- | ----------- | ------------------------------------------------- |
+| Authentification broker MQTT     | Mosquitto   | password_file, allow_anonymous false              |
+| Chiffrement en transit MQTT      | Mosquitto   | TLS port 8883, certificat auto-signé              |
+| Chiffrement radio LoRaWAN        | RAK3172/TTN | AES-128 natif, clés OTAA                          |
+| Contrôle d'accès base de données | InfluxDB    | Token API, 1 token par service                    |
+| Contrôle d'accès tableau de bord | Grafana     | Mot de passe admin, sign-up désactivé             |
+| Minimisation des données         | Payload hex | Payload 2 octets (valeur seule, sans métadonnées) |
+| Limitation de durée de rétention | InfluxDB    | Rétention 30 jours (configurable)                 |
+
+1. Sécurité MQTT
+
+Port sécurisé utilisé : 8883
+Utilisation de login/mot de passe
+TLS
+
+2. Sécurité TTN
+
+APP Key + Identifiant de machine
+
+3. Sécurité InfluxDB
+
+Utilisation de login/mot de passe
+
+Génération d'un token par service
+
+![alt image](../images/influxdb_token.png)
+
+4. Grafana
+
+Utilisation de login/mot de passe
+
+5. RGPD
+
+Rétention des données : 30 jours
 
 ### Mesures non appliquees et justification
 

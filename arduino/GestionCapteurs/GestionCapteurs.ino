@@ -200,11 +200,13 @@ void loop() {
     makeLedAnimation();
   }
 
-  // --- PARTIE PONT SÉRIE ---
-  while (Serial.available()) {
-    Serial2.write(Serial.read());
-  }
-  while (Serial2.available()) {
-    Serial.write(Serial2.read());
-  }
+  // Mise en veille légère pendant ~30 secondes
+  Serial.println("💤 Entrée en light sleep...");
+  Serial.flush(); // Important : vider le buffer avant de dormir
+
+  esp_sleep_enable_timer_wakeup((uint64_t)(intervalleEnvoi - 500) * 1000ULL);
+  esp_light_sleep_start();
+
+  Serial.println("⏰ Réveil !");
 }
+

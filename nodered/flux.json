@@ -29,8 +29,8 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1100,
-    "y": 440,
+    "x": 900,
+    "y": 160,
     "wires": []
   },
   {
@@ -38,7 +38,7 @@
     "type": "mqtt in",
     "z": "f6f2187d.f17ca8",
     "name": "MQTT TTN",
-    "topic": "v3/+/devices/+/up",
+    "topic": "v3/ynov-test-m1@ttn/devices/rak3172-capteur-2/up",
     "qos": "0",
     "datatype": "auto-detect",
     "broker": "59717e91be412cea",
@@ -82,35 +82,7 @@
     "libs": [],
     "x": 370,
     "y": 500,
-    "wires": [
-      [
-        "6d594dad1ff87e14",
-        "d2b4bcefb16f371f",
-        "21fa1e1d259a9b50",
-        "b332ae6929e65246"
-      ]
-    ]
-  },
-  {
-    "id": "6d594dad1ff87e14",
-    "type": "switch",
-    "z": "f6f2187d.f17ca8",
-    "name": "switch",
-    "property": "payload.temperature",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "gt",
-        "v": "5",
-        "vt": "str"
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 1,
-    "x": 590,
-    "y": 520,
-    "wires": [["dc079acb2df6d28d"]]
+    "wires": [["21fa1e1d259a9b50", "b332ae6929e65246", "6cf5f443c7572218"]]
   },
   {
     "id": "dc079acb2df6d28d",
@@ -124,9 +96,9 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 830,
-    "y": 520,
-    "wires": [["4263297b9ae7e409", "d2b4bcefb16f371f"]]
+    "x": 870,
+    "y": 500,
+    "wires": [["4263297b9ae7e409"]]
   },
   {
     "id": "21fa1e1d259a9b50",
@@ -142,7 +114,7 @@
     "retentionPolicyV18Flux": "",
     "org": "rpi-groupe011",
     "bucket": "iot_data",
-    "x": 620,
+    "x": 600,
     "y": 400,
     "wires": []
   },
@@ -153,9 +125,120 @@
     "name": "websocket",
     "server": "b71012db7068c371",
     "client": "",
-    "x": 1070,
-    "y": 360,
+    "x": 1090,
+    "y": 340,
     "wires": []
+  },
+  {
+    "id": "4058d4651dac6226",
+    "type": "mqtt in",
+    "z": "f6f2187d.f17ca8",
+    "name": "MQTT TTN VENTILO",
+    "topic": "v3/ynov-test-m1@ttn/devices/ra3172-capteur-3/up",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "59717e91be412cea",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 200,
+    "y": 360,
+    "wires": [["8ab8f24bf0d53d9c"]]
+  },
+  {
+    "id": "661d5dcdc74a95cd",
+    "type": "function",
+    "z": "f6f2187d.f17ca8",
+    "name": "function 1",
+    "func": "msg.payload = {\n    device_id: msg.payload.device_id || \"esp32-01\",\n    temperature: msg.payload.temperature,\n    humidity: msg.payload.humidity,\n    luminosity: msg.payload.luminosity,\n    type: \"mesure\"\n};\nmsg.headers = { \"Content-Type\": \"application/json\" };\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 800,
+    "y": 600,
+    "wires": [["80d9523ad7afc784"]]
+  },
+  {
+    "id": "80d9523ad7afc784",
+    "type": "http request",
+    "z": "f6f2187d.f17ca8",
+    "name": "Google Sheets",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://script.google.com/macros/s/AKfycbyTxS8nwkd3bo8xxCMzNLq9RBdCdx8t1d0QM3sq3lO3sVjGuHYeb4EFwL9_WNJRm5Gr/exec",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 1080,
+    "y": 620,
+    "wires": [[]]
+  },
+  {
+    "id": "8ab8f24bf0d53d9c",
+    "type": "switch",
+    "z": "f6f2187d.f17ca8",
+    "name": "is vent status",
+    "property": "payload.uplink_message.f_port",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "16",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 470,
+    "y": 300,
+    "wires": [["dce8b27045db64f3"]]
+  },
+  {
+    "id": "dce8b27045db64f3",
+    "type": "function",
+    "z": "f6f2187d.f17ca8",
+    "name": "format_vent_status",
+    "func": "// On extrait les données\nconst device = msg.payload.end_device_ids.device_id;\nconst time = msg.payload.received_at;\n\n// On reconstruit un nouveau message propre\nmsg.payload = {\n    device: device,\n    time: time,\n    is_on: msg.payload.uplink_message.decoded_payload.is_on\n    };\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 690,
+    "y": 300,
+    "wires": [["d2b4bcefb16f371f", "b332ae6929e65246"]]
+  },
+  {
+    "id": "6cf5f443c7572218",
+    "type": "switch",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "property": "payload.temperature",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gt",
+        "v": "22",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 620,
+    "y": 560,
+    "wires": [["661d5dcdc74a95cd"]]
   },
   {
     "id": "59717e91be412cea",
@@ -211,7 +294,7 @@
     "wholemsg": "true"
   },
   {
-    "id": "6f763fdd4dec1c4f",
+    "id": "0aa641dbb1da6f16",
     "type": "global-config",
     "env": [],
     "modules": {
