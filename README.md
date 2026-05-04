@@ -20,6 +20,8 @@
   - 2 esp32
   - 2 module RAK
 
+![alt schema](./images/mermaid_schema.png)
+
 ## Présentation du répertoire GITHUB
 
 Ce répertoire contient tous le nécessaire pour mettre en place de projet
