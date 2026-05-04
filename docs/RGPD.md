@@ -7,32 +7,16 @@
 
 ## 1. Donnees collectees (Art. 30 RGPD -- Registre des traitements)
 
-| Donnée collectée                        | Type              | Capteur          | Fréquence        | Durée de rétention                   | Qualifié de DCP ?                                |
-| --------------------------------------- | ----------------- | ---------------- | ---------------- | ------------------------------------ | ------------------------------------------------ |
-| 23.1                                    | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
-| 39                                      | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
-| DevEUI du device                        | Identifiant       | RAK3172          | À chaque join    | 30 jours                             | **Potentiellement** -- identifiant unique        |
-| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN              | À chaque envoi   | Supprimé à la consomation du message | **Potentiellement** -- géolocalisation indirecte |
+| Donnée collectée                        | Type              | Capteur | Fréquence      | Durée de rétention                   | Qualifié de DCP ?                                |
+| --------------------------------------- | ----------------- | ------- | -------------- | ------------------------------------ | ------------------------------------------------ |
+| 23.1                                    | Numérique (float) | DHT11   | 15 min         | 30 jours                             | Non -- donnée physique                           |
+| 39                                      | Numérique (float) | DHT11   | 15 min         | 30 jours                             | Non -- donnée physique                           |
+| DevEUI du device                        | Identifiant       | RAK3172 | À chaque join  | 30 jours                             | **Potentiellement** -- identifiant unique        |
+| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN     | À chaque envoi | Supprimé à la consomation du message | **Potentiellement** -- géolocalisation indirecte |
 
 > **Donnée à caractère personnel (DCP) :**
 
-Sur ce projet aucune données personnelles ne sont utilisée. Toutefois il est nécessaire de stipuler que les Métadonnées et géolocalisation des capteurs pourrais le devenir lors d'une mise en production.
-
-### Analyse spécifique au cas d'usage
-
-> TODO : décrire ici si les données collectées dans votre cas d'usage peuvent
-> qualifier de DCP. Justifier en une phrase.
->
-> Exemple (présence) : "Un capteur PIR détectant des mouvements dans un domicile
-> privé permet d'inférer des habitudes de vie. Ces données qualifient de DCP
-> au sens de l'art. 4(1) RGPD."
->
-> Exemple (température extérieure) : "La température extérieure mesurée sur une
-> terrasse ne permet pas d'identifier une personne. Ces données ne qualifient
-> pas de DCP. Cependant, les métadonnées TTN (gateway_id, RSSI) permettant
-> une géolocalisation indirecte sont traitées avec prudence."
-
----
+## Sur ce projet aucune données personnelles ne sont utilisée. Toutefois il est nécessaire de stipuler que les Métadonnées et géolocalisation des capteurs pourrais le devenir lors d'une mise en production.
 
 ## 2. Mesures techniques appliquees (Art. 32 RGPD)
 

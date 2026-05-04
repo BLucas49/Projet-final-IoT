@@ -3,8 +3,6 @@
 > Remarque générale pour tout Branchements ne pas mettre sous tension le montage
 > Pour des soucis de compréhension chacunes des deux boards ont leur propre documentation.
 
-Certains branchements se répètent ils seront donc ici
-
 ## Configuration générale
 
 ### Module LoRa (RAK3172)
@@ -22,7 +20,34 @@ Le RAK3172 est un module de communication LoRaWAN ultra-basse consommation basé
 
 > Les broches cités ici sont les broches du module RAK3172
 
-###
+#### Parametres LoRaWAN
 
-Architecture board 1 => Board de récupération des données avec les capteurs pour la transmission vers TTN
-Architecture board 2 => Board de gestion des ventilateurs (manuel via capteur/ authomatisée via lorawan)
+| Parametre        | Valeur          | Justification                                                |
+| ---------------- | --------------- | ------------------------------------------------------------ |
+| Mode             | OTAA            | Plus sécurisé qu'ABP (re-négociation des clés à chaque join) |
+| Spreading Factor | SF7             | TODO : adapter selon la distance et la consommation          |
+| Bande            | EU868           | Europe (8 canaux, 125 kHz BW)                                |
+| Duty cycle       | 1%              | Réglementation ETSI EU868                                    |
+| DevEUI           | [dans config.h] | Identifiant unique du device                                 |
+
+> Le module se configure via le code lié à la board
+
+#### Architecture board 1
+
+#### Présentation
+
+Board de récupération des données avec les capteurs pour la transmission vers TTN
+
+#### Branchements
+
+Voir architecture_board_1.md ci-contre.
+
+#### Architecture board 2
+
+#### Présentation
+
+Board de gestion des ventilateurs (manuel via capteur/ authomatisée via lorawan)
+
+#### Branchements
+
+Voir architecture_board_2.md ci-contre.

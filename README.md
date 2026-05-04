@@ -10,10 +10,7 @@
 
 - **Contexte de réalisation** : Module IOT, M1 Informatique DEV/IOT, Ynov Nantes
 
-- **Description** : Dans un datacenter, il est nécessaire que la température reste sous un certain seuil afin d'éviter aux machines de surchauffer. Afin de palier à ce problème, nous avons réalisée deux blocs. Le premier dont le but est de recuillir des données est constitué de deux capteurs (DHT11 & LDR) afin de récupérer la luminosité, l'humidité et la température. Le second est utilisé pour gérer le bloc de ventilition auxilière. Il peut être mis en route par deux moyen :
-
-1. Automatiquement : via une alerte configurable
-2. Par action humaine : passage devant capteur ou via l'application.
+- **Description** : Dans un datacenter, il est nécessaire que la température reste sous un certain seuil afin d'éviter aux machines de surchauffer. Afin de palier à ce problème, nous avons réalisée deux blocs. Le premier dont le but est de recuillir des données est constitué de deux capteurs (DHT11 & LDR) afin de récupérer la luminosité, l'humidité et la température. Le second est utilisé pour gérer le bloc de ventilition auxilière. Il peut être mis en route de manière automatique : via une alerte configurable, ou par action humaine : passage devant capteur ou via l'application. Le bloc de ventilation est combiné à un buzzer qui permet de lancer une alarme en cas de dépassement du seuil critique définis.
 
 - **Matériel requis** : -
   - 1 ventilateur

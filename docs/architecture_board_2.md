@@ -17,6 +17,20 @@ Un rail de la board est dédié à l'allumage des ventilateurs. Dans la suite de
 
 > Il est nécessaire de faire le branchement du module LoRa (RAK3172) avant de continuer (voir /docs/architecture.md)
 
+## Paramètre LORAWAN
+
+| Parametre        | Valeur                      | Justification                                                   |
+| ---------------- | --------------------------- | --------------------------------------------------------------- |
+| Mode             | OTAA                        | Plus sécurisé qu'ABP (re-négociation des clés à chaque join)    |
+| Classe           | A                           | Envoi périodique uniquement, pas besoin de réception permanente |
+| Spreading Factor | SF7                         | Portée courte, débit maximal, latence minimale                  |
+| Bande            | EU868                       | Europe (8 canaux, 125 kHz BW)                                   |
+| Duty cycle       | 1%                          | Réglementation ETSI EU868                                       |
+| Intervalle       | 30 secondes                 | Envoi périodique des données capteurs                           |
+| DevEUI           | Défini dans `credentials.h` | Identifiant unique du device, fourni par TTN                    |
+| AppEUI           | Défini dans `credentials.h` | Identifiant de l'application TTN                                |
+| AppKey           | Défini dans `credentials.h` | Clé de chiffrement OTAA, à ne pas partager                      |
+
 ## Configuration capteurs
 
 ### Capteur HC-SR04
@@ -58,8 +72,41 @@ Le SRD-05VDC-SL-C est un relais 5V qui permet de contrôler un circuit électriq
 #### Présentation
 
 Le ventilateur génère un flux d'air lorsqu'il est alimenté en courant continu via ses deux fils, positif (VCC) et négatif (GND).
+Dans ce projet il permet de simuler un bloc de climatisation
 
 #### Branchements
 
 1. Relier la broche + (ou fil rouge) et le **signal**
 2. Relier la broche - (ou fil noir) et le **GND**
+
+### Buzzer
+
+#### Présentation
+
+Le buzzer est un composant acoustique qui émet un signal sonore lorsqu'il est alimenté
+Dans ce projet il permet de faire une alarme en cas de dépassement de seuil
+
+#### Branchements
+
+1. Relier la broche - au **GND**
+2. Relier la broche S à la PIN D22 de l'esp32
+
+> Remarque : la broche + du buzzer est inutile le 5V par la broche signal
+
+### Bouton poussoir
+
+#### Présentation
+
+Le bouton poussoir permet d'interagir manuellement avec le système.
+Dans ce projet, il sert à allumer ou éteindre le buzzer en appuyant dessus.
+
+#### Branchements
+
+1. Relier une broche du bouton au **GND**
+2. Relier l'autre broche à la PIN D5 de l'esp32
+
+## Code gestion ventilateur depuis le TTN
+
+1. Eteindre : '00'
+1. Allumage sans alarme : '01'
+1. Allumage avec alarme : '02'
