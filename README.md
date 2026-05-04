@@ -19,6 +19,15 @@
   - 1 ventilateur
   - 2 esp32
   - 2 module RAK
+  - 1 raspberry Pi ou autre sever supportant docker
+  - 1 détecteur de mouvement
+  - 1 ou 2 ventilateurs
+  - 1 capteur de température DHT11
+  - 1 bouton
+  - beacoup de fils
+  - 1 buzzer
+  - 1 relaie
+  - 3 leds
 
 ![alt schema](./images/mermaid_schema.png)
 

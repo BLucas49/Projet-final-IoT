@@ -7,12 +7,12 @@
 
 ## 1. Donnees collectees (Art. 30 RGPD -- Registre des traitements)
 
-| Donnée collectée                        | Type              | Capteur          | Fréquence        | Durée de rétention | Qualifié de DCP ?                                |
-| --------------------------------------- | ----------------- | ---------------- | ---------------- | ------------------ | ------------------------------------------------ |
-| TODO (ex: Température)                  | Numérique (float) | TODO (ex: DHT22) | TODO (ex: 1/min) | 30 jours           | Non -- donnée physique                           |
-| TODO (ex: Humidité)                     | Numérique (float) | TODO (ex: DHT22) | TODO (ex: 1/min) | 30 jours           | Non -- donnée physique                           |
-| DevEUI du device                        | Identifiant       | RAK3172          | À chaque join    | 30 jours           | **Potentiellement** -- identifiant unique        |
-| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN              | À chaque envoi   | 30 jours           | **Potentiellement** -- géolocalisation indirecte |
+| Donnée collectée                        | Type              | Capteur          | Fréquence        | Durée de rétention                   | Qualifié de DCP ?                                |
+| --------------------------------------- | ----------------- | ---------------- | ---------------- | ------------------------------------ | ------------------------------------------------ |
+| 23.1                                    | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
+| 39                                      | Numérique (float) | DHT11            | 15 min           | 30 jours                             | Non -- donnée physique                           |
+| DevEUI du device                        | Identifiant       | RAK3172          | À chaque join    | 30 jours                             | **Potentiellement** -- identifiant unique        |
+| Métadonnées TTN (RSSI, SNR, gateway_id) | Métadonnée réseau | TTN              | À chaque envoi   | Supprimé à la consomation du message | **Potentiellement** -- géolocalisation indirecte |
 
 > **Donnée à caractère personnel (DCP) :**
 
