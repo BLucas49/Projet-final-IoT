@@ -18,6 +18,7 @@
   - 1 détecteur de mouvement
   - 1 ou 2 ventilateurs
   - 1 capteur de température DHT11
+  - 1 capteur de luminosité LDR
   - 1 bouton
   - beacoup de fils
   - 1 buzzer
