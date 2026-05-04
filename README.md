@@ -40,8 +40,6 @@ Ce répertoire contient tous le nécessaire pour mettre en place de projet
 3. Le dossier docs contient les documentation sur l'architecture du projet & sur le RGPD
 4. Le dossier grafana contient le dashboard exporté au format json ainsi que des screens du dashboard
 5. Le dossier nodered contient la conf du flux de donnée exporté au format json et un screen du schéma
-4. Le dossier grafana ...
-5. Le dossier nodered ...
 
 ## Liens externes
 
