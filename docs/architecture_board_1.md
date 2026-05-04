@@ -96,3 +96,7 @@ La LED (Light Emitting Diode) est un composant lumineux qui émet de la lumière
 **Exemple complet :** `09193248` → Temp: 23.29°C, Hum: 50%, Lum: 75%
 
 > Remarque : la température est signée (int16_t) pour supporter les valeurs négatives. Les autres grandeurs sont non signées (uint8_t).
+
+## Light sleep
+
+L'esp32 se met en light sleep pendant environ 30s pour simuler un fonctionnement sur batterie économise de la batterie. Le timing est à modifier lors de la mise en production.
