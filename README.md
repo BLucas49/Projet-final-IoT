@@ -26,8 +26,6 @@
   - 1 relaie
   - 3 leds
 
-![alt schema](./images/mermaid_schema.png)
-
 ## Présentation du répertoire GITHUB
 
 Ce répertoire contient tous le nécessaire pour mettre en place de projet
