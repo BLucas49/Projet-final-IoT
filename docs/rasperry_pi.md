@@ -21,7 +21,16 @@ Le système repose sur une architecture conteneurisée gérée par docker-compos
 2. **InfluxDB** : Base de données temporelle pour l'historique des capteurs.  
 3. **Node-RED** : Moteur de règles pour envoyé les messages à l'application de gestion
 4. **Grafana** : Interface de visualisation pour les données IoT et le monitoring.
-4. **Backend JS** : Interface de visualisation pour les données IoT et le monitoring.
+
+### **Backend JS pour l'application**
+
+**Backend JS** : Interface de visualisation pour les données IoT et le monitoring.
+
+Il faut ajouter l'image docker via scp : 
+```bash
+scp backend.tar user_de_vortre_pi@ip_de_votre_pi:/home/user_de_vortre_pi/ming
+```
+N'oubliez pas de renseigné les variable d'environnement nécessaire dans un .env au même niveau que le backend.tar dans pi (voir [.env.example](../.env.example))
 
 ### **Services de Monitoring**
 

@@ -149,6 +149,8 @@ services:
 
   backend:
     image: mon-backend-js:latest
+    env_file:
+      - .env
     ports:
       - "3001:3001"
     restart: unless-stopped
