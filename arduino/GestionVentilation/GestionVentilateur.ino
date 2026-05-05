@@ -108,19 +108,19 @@ void configureLoRa() {
   delay(500);
   // Vérifier NWM avant d'écrire (évite le reboot inutile)
   if (envoyerAT("AT+NWM=?", 500).indexOf("AT+NWM=1") == -1) {
-      envoyerAT("AT+NWM=1", 1000);
+      envoyerAT("AT+NWM=1", 1000); //  Network Working Mode : LoRaWAN (0 = P2P)
       delay(3000); // Attendre le reboot du RAK
       while (Serial2.available()) Serial2.read(); // Vider le message de boot
   }
 
   // Vérifier NJM avant d'écrire (évite AT_ERROR si déjà jointé)
   if (envoyerAT("AT+NJM=?", 500).indexOf("AT+NJM=1") == -1) {
-      envoyerAT("AT+NJM=1", 500);
+      envoyerAT("AT+NJM=1", 500); // Network Join Mode : OTAA (Over-The-Air Activation)
   }
-  envoyerAT("AT+BAND=4", 500);   // Bande EU868
-  envoyerAT("AT+DEVEUI=" + String(DEVEUI), 500);
-  envoyerAT("AT+APPEUI=" + String(APPEUI), 500);
-  envoyerAT("AT+APPKEY=" + String(APPKEY), 500);
+  envoyerAT("AT+BAND=4", 500);   // Norme EU868
+  envoyerAT("AT+DEVEUI=" + String(DEVEUI), 500);  // Identifiant unique du module
+  envoyerAT("AT+APPEUI=" + String(APPEUI), 500); // Identifiant de l'application
+  envoyerAT("AT+APPKEY=" + String(APPKEY), 500); // Configuration OTAA 
   envoyerAT("AT+CLASS=A", 500);  // Class a pour le join
   
   Serial.println("✅ Configuration terminée\n");
