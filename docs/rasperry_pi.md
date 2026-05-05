@@ -21,6 +21,7 @@ Le système repose sur une architecture conteneurisée gérée par docker-compos
 2. **InfluxDB** : Base de données temporelle pour l'historique des capteurs.  
 3. **Node-RED** : Moteur de règles pour envoyé les messages à l'application de gestion
 4. **Grafana** : Interface de visualisation pour les données IoT et le monitoring.
+4. **Backend JS** : Interface de visualisation pour les données IoT et le monitoring.
 
 ### **Services de Monitoring**
 
