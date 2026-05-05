@@ -29,7 +29,6 @@
 version: "3.8"
 
 services:
-
   # ---------------------------------------------------------------------------
   # MOSQUITTO -- Broker MQTT
   # Port 1883 : MQTT non chiffre (reseau local uniquement)
@@ -147,6 +146,14 @@ services:
       - ming
     ports:
       - "9090:9090"
+
+  backend:
+    image: mon-backend-js:latest
+    env_file:
+      - .env
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
 
 # -----------------------------------------------------------------------------
 # VOLUMES -- Persistance des donnees
