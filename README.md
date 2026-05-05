@@ -1,7 +1,5 @@
 # ProjetFinalIoT
 
-> Remarque : Ce projet est lié avec le repository suivant (application)[]
-
 ## Présentation du projet
 
 - **Demande** : Création d'une chaîne IoT complète de l'acquisition, transformation et retransmission de données
